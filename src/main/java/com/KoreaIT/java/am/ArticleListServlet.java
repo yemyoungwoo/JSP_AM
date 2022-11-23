@@ -32,7 +32,7 @@ public class ArticleListServlet extends HttpServlet {
 			sql.append("FROM article");
 			sql.append("ORDER BY id DESC");
 			List<Map<String, Object>> articleRows = DBUtil.selectRows(conn, sql);
-
+//d
 			request.setAttribute("articleRows", articleRows);
 			request.getRequestDispatcher("/jsp/article/list.jsp").forward(request, response);
 		} catch (SQLException e) {

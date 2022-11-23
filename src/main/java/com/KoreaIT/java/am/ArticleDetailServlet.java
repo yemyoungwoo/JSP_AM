@@ -23,7 +23,7 @@ public class ArticleDetailServlet extends HttpServlet {
 
 		response.setContentType("text/html; charset=UTF-8");
 		Connection conn = null;
-
+//d
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {

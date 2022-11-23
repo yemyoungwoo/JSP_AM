@@ -28,6 +28,7 @@ List<Map<String, Object>> articleRows = (List<Map<String, Object>>)request.getAt
 			<th>삭제</th>
 		</tr>
 
+
 	<% for(Map<String, Object> articleRow : articleRows){ %>
 		<tr>
 			<td><%= (int)articleRow.get("id") %></td>
