@@ -20,6 +20,7 @@ SET regDate = NOW(),
 title = 'test1',
 `body` = 'test1';
 
+
 INSERT INTO article
 SET regDate = NOW(),
 title = 'test2',

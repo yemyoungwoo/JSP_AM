@@ -22,7 +22,6 @@ public class ArticleDetailServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html; charset=UTF-8");
-//d
 		Connection conn = null;
 
 		try {
