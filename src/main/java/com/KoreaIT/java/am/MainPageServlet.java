@@ -21,7 +21,7 @@ public class MainPageServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.getRequestDispatcher("/jsp/home/main.jsp").forward(request, response);
-
+//d
 	}
 
 }

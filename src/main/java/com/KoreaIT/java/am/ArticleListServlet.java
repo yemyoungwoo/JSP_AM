@@ -31,7 +31,7 @@ public class ArticleListServlet extends HttpServlet {
 
 			sql.append("FROM article");
 			sql.append("ORDER BY id DESC");
-
+//d
 			List<Map<String, Object>> articleRows = DBUtil.selectRows(conn, sql);
 
 			request.setAttribute("articleRows", articleRows);
