@@ -1,18 +1,18 @@
 package com.KoreaIT.java.am;
 
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import com.KoreaIT.java.am.util.DBUtil;
+import com.KoreaIT.java.am.util.SecSql;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Map;
-
-import com.KoreaIT.java.am.util.DBUtil;
-import com.KoreaIT.java.am.util.SecSql;
 
 @WebServlet("/article/doWrite")
 public class ArticleDoWriteServlet extends HttpServlet {
