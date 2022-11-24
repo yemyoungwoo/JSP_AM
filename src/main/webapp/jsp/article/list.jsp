@@ -2,7 +2,7 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.time.LocalDateTime" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%
 List<Map<String, Object>> articleRows = (List<Map<String, Object>>)request.getAttribute("articleRows");
 int cPage = (int)request.getAttribute("page");
@@ -65,6 +65,7 @@ int totalPage = (int)request.getAttribute("totalPage");
 		int end = cPage + pageSize;
 		if(end > totalPage) {
 			end = totalPage;
+			
 		}
 		for(int i = from; i <= end; i++){ 
 		%>
