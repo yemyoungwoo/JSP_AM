@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import com.KoreaIT.java.am.config.Config;
+import com.KoreaIT.java.am.exception.SQLErrorException;
 import com.KoreaIT.java.am.util.DBUtil;
 import com.KoreaIT.java.am.util.SecSql;
 
@@ -25,13 +27,13 @@ public class ArticleListServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		Connection conn = null;
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName(Config.getDBDriverClassName());
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 로딩 실패");
 		}
 		String url = "jdbc:mysql://127.0.0.1:3306/JSPTest?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeNehavior=convertToNull";
 		try {
-			conn = DriverManager.getConnection(url, "root", "");
+			conn = DriverManager.getConnection(Config.getDBUrl(), Config.getDBUser(), Config.getDBPassword());
 			int page = 1;
 			if (request.getParameter("page") != null && request.getParameter("page").length() != 0){
 			  page = Integer.parseInt(request.getParameter("page"));
@@ -56,6 +58,8 @@ public class ArticleListServlet extends HttpServlet {
 			request.getRequestDispatcher("/jsp/article/list.jsp").forward(request, response);
 		} catch (SQLException e) {
 			System.out.println("에러: " + e);
+		} catch (SQLErrorException e) {
+			e.getOrigin().printStackTrace();
 		} finally {
 			try {
 				if (conn != null && !conn.isClosed()) {
