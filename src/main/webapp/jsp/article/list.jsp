@@ -2,7 +2,7 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.time.LocalDateTime" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%
 List<Map<String, Object>> articleRows = (List<Map<String, Object>>)request.getAttribute("articleRows");
 int cPage = (int)request.getAttribute("page");
@@ -15,10 +15,19 @@ int totalPage = (int)request.getAttribute("totalPage");
 <title>게시물 리스트</title>
 </head>
 <body>
+
 	<h1>게시물 리스트</h1>
+
+	<%@ include file="../part/topBar.jsp" %>
+
 	<div>
 		<a href="write">글쓰기</a>
 	</div>
+
+	<div>
+		<a href="../home/main">메인으로 돌아가기</a>
+	</div>
+
 	<table border="2" bordercolor="green">
 		<colgroup>
 			<col width="50"/>
@@ -28,7 +37,7 @@ int totalPage = (int)request.getAttribute("totalPage");
 			<th>번호</th>
 			<th>날짜</th>
 			<th>제목</th>
-			<th>삭제</th>
+			<th>작성자</th>
 		</tr>
 	
 	<% for(Map<String, Object> articleRow : articleRows){ %>
@@ -36,26 +45,26 @@ int totalPage = (int)request.getAttribute("totalPage");
 			<td><%= (int)articleRow.get("id") %></td>
 			<td><%= (LocalDateTime)articleRow.get("regDate") %></td>
 			<td><a href="detail?id=<%= (int)articleRow.get("id") %>"><%= (String)articleRow.get("title") %></a></td>
-			<td><a href="doDelete?id=<%= (int)articleRow.get("id") %>" onclick="if(confirm('정말 삭제하시겠습니까?') == false) return false;">삭제버튼</a></td>
+			<td><%= (String)articleRow.get("writerName") %></td>
 		</tr>
 	<% } %>
 	</table>
-
+	
 	<style type="text/css">
 		.page > a.red {
 			color:red;
 		}
 	</style>
-
+	
 	<div class="page">
-			<%
+		<%
 		if(cPage > 1){
 		%>	
 			<a href="list?page=1">◀◀</a>
 		<%
 		}
 		%>
-
+	
 		<%
 		int pageSize = 5;
 		int from = cPage - pageSize;
@@ -65,7 +74,6 @@ int totalPage = (int)request.getAttribute("totalPage");
 		int end = cPage + pageSize;
 		if(end > totalPage) {
 			end = totalPage;
-			
 		}
 		for(int i = from; i <= end; i++){ 
 		%>
@@ -81,6 +89,6 @@ int totalPage = (int)request.getAttribute("totalPage");
 		}
 		%>
 	</div>
-
+	
 </body>
 </html>
